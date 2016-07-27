@@ -8,10 +8,20 @@
 
 </head>
 <body>
+   <script src="https://cdn.ravenjs.com/3.2.1/raven.min.js"></script>
+   <script>Raven.config('https://3370917747c449adafa04bdf057fbca2@sentry.soenkekluth.com/6',{
+             whitelistUrls: [
+                 /soenkekluth\.com/
+             ],
+             ignoreErrors: [
+                 'fb_xd_fragment',
+                 /ReferenceError:.*/
+             ],
+             includePaths: [
+                 /https?:\/\/(sentry\.)?soenkekluth\.com/
+             ]
+         }).install();</script>
 
-  <script src="https://cdn.ravenjs.com/3.1.1/raven.min.js"></script>
-  <script>Raven.config('https://3370917747c449adafa04bdf057fbca2@sentry.soenkekluth.com/6').install()
-</script>
   <script>
     setTimeout(function(){
 
