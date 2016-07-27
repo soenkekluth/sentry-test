@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>huhu</title>
+  <link rel="stylesheet" href="">
+
+</head>
+<body>
+
+  <script src="https://cdn.ravenjs.com/3.2.1/raven.min.js"></script>
+  <script>Raven.config('https://9e1be9ce425443d8b5883d001fd992a9@sentry.soenkekluth.com/4',{
+            whitelistUrls: [
+                /soenkekluth\.com/
+            ],
+            ignoreErrors: [
+                'fb_xd_fragment',
+                /ReferenceError:.*/
+            ],
+            includePaths: [
+                /https?:\/\/(sentry\.)?soenkekluth\.com/
+            ]
+        }).install();</script>
+  <script>
+    setTimeout(function(){
+
+      Raven.captureException(new Error('UI Error'));
+      Raven.captureMessage('Test Message');
+      Raven.captureMessage('Eastcode!');
+
+
+      Raven.captureMessage('Broken!', {tags: { key: "value" }});
+
+
+      // Raven.showReportDialog();
+
+
+      Raven.captureMessage('Something happened', {
+        level: 'info' // one of 'info', 'warning', or 'error'
+      });
+
+    }, 1000);
+  </script>
+</body>
+</html>
