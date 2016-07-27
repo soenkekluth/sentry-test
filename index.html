@@ -8,6 +8,7 @@
 
 </head>
 <body>
+  <button id="button">Send Message</button>
    <script src="raven.min.js"></script>
    <script>Raven.config('https://3370917747c449adafa04bdf057fbca2@sentry.soenkekluth.com/6',{
              whitelistUrls: [
@@ -23,11 +24,14 @@
          }).install();</script>
 
   <script>
+    document.querySelector('#button').addEventListener('click', function(){
+       Raven.captureMessage('Eastcode!');
+    })
     setTimeout(function(){
 
       Raven.captureException(new Error('UI Error'));
       Raven.captureMessage('Test Message');
-      Raven.captureMessage('Eastcode!');
+     
 
 
       Raven.captureMessage('Broken!', {tags: { key: "value" }});
@@ -42,5 +46,8 @@
 
     }, 1000);
   </script>
+  
+  
+  
 </body>
 </html>
